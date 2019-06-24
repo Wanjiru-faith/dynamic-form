@@ -43,7 +43,7 @@
         Treat yourself by leveling up your monthly box
       </p>
 
-      <div @check="submit" class="options">
+      <div @change="submit" class="options">
         <div class="option">
           <input v-model="form.chocolate" type="checkbox" value="chocolate" id="chocolate">
           <label for="chocolate">4 pcs. Single Origin Chocolate (+$4/month)</label>
@@ -76,6 +76,7 @@
 
 <script>
   export default {
+    //receiveing the data from the form object in the parent component through prop wizardData
     props:{
       wizardData:{
         type: Object,
@@ -91,6 +92,7 @@
       }
     },
     computed: {
+      
       totalPrice () {
         let total = this.wizardData.plan.price
         if (this.form.chocolate){
@@ -102,11 +104,17 @@
         return total
       }
     },
+    validations:{
+
+    },
     methods:{
       submit(){
           this.$emit('update',{
+            data:{
             chocolate: this.form.chocolate,
             otherTreat: this.form.otherTreat
+             },
+             valid:true
         })
       }
     }

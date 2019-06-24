@@ -71,11 +71,18 @@
     methods: {
       pickPlan (plan) {
         this.selectedPlan = plan
+        this.submit()
+      },
+      submit (){
 
         this.$emit('update',{
-            plan:this.selectedPlan
+            data:{
+                plan: this.selectedPlan
+            },
+            valid:!this.$v.$invalid
         })
       }
+      
     }
   }
 </script>
