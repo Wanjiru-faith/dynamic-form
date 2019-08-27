@@ -35,7 +35,7 @@
   import {required, email} from 'vuelidate/lib/validators'
   export default {
     data () {
-      return {
+      return { 
         form: {
           email: null,
           password: null,
